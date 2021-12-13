@@ -85,8 +85,15 @@ let playerOneGrid;
 let playerTwoGrid;
 let playerTurn;
 let winner;
+let columns = [ [0, 1, 2, 3, 4, 5],
+            [6, 7, 8, 9, 10, 11],
+            [12, 13, 14, 15, 16, 17],
+            [18, 19, 20, 21, 22, 23],
+            [24, 25, 26, 27, 28, 29],
+            [30, 31, 32, 33, 34, 35],
+            [36, 37, 38, 39, 40, 41] ]
 
-document.querySelector("#board").addEventListener("click", renderClick);
+document.querySelector("#board").addEventListener("click", handleTurn);
 
 function init() {
     playerOneGrid = [];
@@ -97,16 +104,37 @@ function init() {
     playerTurn = 1;
   
     render();
-  }
+}
+
+function handleTurn(e) {
+    if(winner === 1) {
+        return 1;
+    } else if (winner === 2) {
+        return 2;
+    } else if (winner === 3) {
+        return 3;
+    } else if (playerTurn === 1) {
+        let column = e.target.className;
+        if (columns[column].length === 0)
+            return console.log(columns[column]);
+        } else {
+        playerOneGrid.unshift(columns[column].shift());
+        console.log(columns[column]);
+    }
+}
+// function render() {
+//     board.forEach(function(array) {
+//         array.forEach(cell) {
+            
+//         }
+//     }
+// }
 
 // function renderClick(e) {
 //     let column = e.target.className;
-//     board[column].forEach(element) => {
-
-//     }
-    
+//     if 
+//     console.log(document.getElementById('board'));
 //     // let cell  rowNum = [column].shift();= document.querySelector(`tr.${rowNum} td.c1 div`);
-//     let cell = document.getElementById("#board").rows[0].cells[0];
+//     let cell = document.getElementById('board').rows[0].cells[0];
 //     cell.style.background = "black";
-//     cell.innerHTML = "cheese";
 // }
