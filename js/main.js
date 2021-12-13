@@ -81,22 +81,32 @@ let board = [
     [null,null,null,null,null,null],
 ]
 
-let playerOneGrid = [];
-let playerTwoGrid = [];
-let playerTurn = 1;
-let winner = null;
+let playerOneGrid;
+let playerTwoGrid;
+let playerTurn;
+let winner;
 
 document.querySelector("#board").addEventListener("click", renderClick);
 
-let c1 = [0,1,2,3,4,5,6];
-function renderClick(e) {
-    let column = e.target.className;
-    board[column].forEach(element) => {
+function init() {
+    playerOneGrid = [];
+    playerTwoGrid = [];
+  
+    winner = null;
+  
+    playerTurn = 1;
+  
+    render();
+  }
 
-    }
+// function renderClick(e) {
+//     let column = e.target.className;
+//     board[column].forEach(element) => {
+
+//     }
     
-    // let cell  rowNum = [column].shift();= document.querySelector(`tr.${rowNum} td.c1 div`);
-    let cell = document.getElementById("#board").rows[0].cells[0];
-    cell.style.background = "black";
-    cell.innerHTML = "cheese";
-}
+//     // let cell  rowNum = [column].shift();= document.querySelector(`tr.${rowNum} td.c1 div`);
+//     let cell = document.getElementById("#board").rows[0].cells[0];
+//     cell.style.background = "black";
+//     cell.innerHTML = "cheese";
+// }
