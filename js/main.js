@@ -79,15 +79,7 @@ const winningCombos = [
 
 
 // board used to track the state of the board to be rendered
-let board = [
-    [],
-    [],
-    [],
-    [],
-    [],
-    [],
-    []
-]
+let board;
 
 // array of player one and player two's pieces to be checked if their is a winner
 let playerOneGrid;
@@ -113,9 +105,20 @@ let columns = [
 // click event listeners for turn function and render
 document.querySelector("#board").addEventListener("click", handleTurn);
 document.querySelector("#board").addEventListener("click", render);
+document.querySelector("#reset").addEventListener("click", init);
 
 
 function init() {
+    board = [
+        [],
+        [],
+        [],
+        [],
+        [],
+        [],
+        []
+    ];
+
     playerOneGrid = [];
     playerTwoGrid = [];
   
@@ -186,15 +189,18 @@ function handleTurn(e) {
 // searches through each element of the board array of arrays and
 // changes the background color of each cell accordingly
 function render() {
-    console.log(board, "line 179");
     board.forEach(function(array, arrayIndex) {
-        console.log(array, arrayIndex, "line 181");
+        if (board[arrayIndex].length === 0) {
+            for (let i = 0; i < 6; i++) {
+                let cell = document.getElementById('board').rows[i].cells[arrayIndex];
+                cell.style.backgroundColor = "white";
+            }
+        } else {
         array.forEach(function(element, rowIndex) {
-            console.log(element, "line 183");
             let inverter = 5 - (rowIndex * 2);
-            console.log(inverter);
             let cell = document.getElementById('board').rows[rowIndex + inverter].cells[arrayIndex];
             cell.style.background = boardLookup[element];
         });
+        }
     });
 }
