@@ -135,11 +135,11 @@ init();
 function handleTurn(e) {
         // checks to see if there is a inner or tie
         if(winner === 1) {
-            return 1;
+            return;
         } else if (winner === 2) {
-            return 2;
+            return;
         } else if (winner === 3) {
-            return 3;
+            return;
         } else if (playerTurn === 1) {
             // pushes the lowest avaible cell of the column the player clicked on into the player's grid state
             let column = e.target.className;
@@ -153,6 +153,8 @@ function handleTurn(e) {
             // checks if the player has won and changes the winner variable to that player's number
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerOneGrid.includes(i))) {
+                    let winnerText = document.getElementById('result');
+                    result.innerHTML = "Player One Wins!";
                     return winner = 1;
                 }
             });
@@ -190,12 +192,14 @@ function handleTurn(e) {
 // changes the background color of each cell accordingly
 function render() {
     board.forEach(function(array, arrayIndex) {
+        //clears the board
         if (board[arrayIndex].length === 0) {
             for (let i = 0; i < 6; i++) {
                 let cell = document.getElementById('board').rows[i].cells[arrayIndex];
                 cell.style.backgroundColor = "white";
             }
         } else {
+        //renders play choices
         array.forEach(function(element, rowIndex) {
             let inverter = 5 - (rowIndex * 2);
             let cell = document.getElementById('board').rows[rowIndex + inverter].cells[arrayIndex];
