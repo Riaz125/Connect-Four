@@ -110,7 +110,7 @@ function init() {
         [],
         []
     ];
-    
+
     columns = [
         [0,7,14,21,28,35],
         [1,8,15,22,29,36],
@@ -219,9 +219,13 @@ function render() {
     if (playerTurn === 1) {
         let winnerText = document.getElementById('result');
         result.innerHTML = "Player One's Turn";
+        let playAgain = document.getElementById('reset');
+        playAgain.innerHTML = "Reset";
     } else if (playerTurn === 2) {
         let winnerText = document.getElementById('result');
         result.innerHTML = "Player Two's Turn";
+        let playAgain = document.getElementById('reset');
+        playAgain.innerHTML = "Reset";
     }
     if (winner === 1) {
         let winnerText = document.getElementById('result');

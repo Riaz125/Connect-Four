@@ -1,5 +1,24 @@
 
+#board {
+    margin: auto;
+}
+
 td {
     border: 1px solid black;
     padding: 2rem;
+}
+
+h2 {
+    text-align: center;
+}
+
+#result {
+    text-align: center;
+}
+
+div.btcontainer {
+    text-align: center;
+}
+#reset {
+    text-align: center;
 }
