@@ -157,7 +157,7 @@ function handleTurn(e) {
                 }
             });
             // checks to see if there is a tie and then changes the turn to the other player
-            if (winningCombos.forEach(function(array) {array.length === 0})) {
+            if (columns.forEach(function(array) {array.length === 0})) {
                 return winner = 3;
             } else {
                 return playerTurn = 2;
@@ -176,7 +176,7 @@ function handleTurn(e) {
                     return winner = 2;
                 }
             });
-            if (winningCombos.forEach(function(array) {array.length === 0})) {
+            if (columns.forEach(function(array) {array.length === 0})) {
                 return winner = 3;
             } else {
                 return playerTurn = 1;
@@ -205,6 +205,13 @@ function render() {
         });
         }
     });
+    if (playerTurn === 1) {
+        let winnerText = document.getElementById('result');
+        result.innerHTML = "Player One's Turn";
+    } else if (playerTurn === 2) {
+        let winnerText = document.getElementById('result');
+        result.innerHTML = "Player Two's Turn";
+    }
     if (winner === 1) {
         let winnerText = document.getElementById('result');
             result.innerHTML = "Player One Wins!";
