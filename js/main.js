@@ -122,7 +122,7 @@ function init() {
   
     playerTurn = 1;
   
-    // render();
+    render();
 }
 
 init();
@@ -141,10 +141,10 @@ function handleTurn(e) {
             } else {
             playerOneGrid.push(columns[column].shift());
             board[column].push(1);
+            console.log(board);
             }
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerOneGrid.includes(i))) {
-                    console.log('you won!')
                     return winner = 1;
                 }
             });
@@ -160,10 +160,10 @@ function handleTurn(e) {
             } else {
             playerTwoGrid.push(columns[column].shift());
             board[column].push(2);
+            console.log(board);
         }
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerOneGrid.includes(i))) {
-                    console.log('you won!')
                     return winner = 2;
                 }
             });
@@ -173,16 +173,18 @@ function handleTurn(e) {
                 return playerTurn = 1;
             }
         }
-
         
 }
-// function render() {
-//     board.forEach(function(array) {
-//         array.forEach(cell) {
-            
-//         }
-//     }
-// }
+function render() {
+    board.forEach(function(array, arrayIndex) {
+        array.forEach(function(element, rowIndex) {
+            console.log(element);
+            let cell = document.getElementById('board').rows[rowIndex].cells[arrayIndex];
+            cell.style.background = "black";
+            console.log(rowIndex);
+        });
+    });
+}
 
 // function renderClick(e) {
 //     let column = e.target.className;
