@@ -103,23 +103,32 @@ function init() {
   
     playerTurn = 1;
   
-    render();
+    // render();
 }
 
+init();
+
 function handleTurn(e) {
-    if(winner === 1) {
-        return 1;
-    } else if (winner === 2) {
-        return 2;
-    } else if (winner === 3) {
-        return 3;
-    } else if (playerTurn === 1) {
-        let column = e.target.className;
-        if (columns[column].length === 0)
-            return console.log(columns[column]);
-        } else {
-        playerOneGrid.unshift(columns[column].shift());
-        console.log(columns[column]);
+        if(winner === 1) {
+            return 1;
+        } else if (winner === 2) {
+            return 2;
+        } else if (winner === 3) {
+            return 3;
+        } else if (playerTurn === 1) {
+            let column = e.target.className;
+            if (columns[column].length === 0) {
+                return;
+            } else {
+            playerOneGrid.push(columns[column].shift());
+            }
+        } else if (playerTurn === 2) {
+            let column = e.target.className;
+            if (columns[column].length === 0) {
+                return;
+            } else {
+            playerTwoGrid.push(columns[column].shift());
+        }
     }
 }
 // function render() {
