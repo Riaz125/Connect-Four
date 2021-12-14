@@ -153,8 +153,6 @@ function handleTurn(e) {
             // checks if the player has won and changes the winner variable to that player's number
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerOneGrid.includes(i))) {
-                    let winnerText = document.getElementById('result');
-                    result.innerHTML = "Player One Wins!";
                     return winner = 1;
                 }
             });
@@ -174,7 +172,7 @@ function handleTurn(e) {
             console.log(board);
         }
             winningCombos.forEach(function(array) {
-                if(array.every(i => playerOneGrid.includes(i))) {
+                if(array.every(i => playerTwoGrid.includes(i))) {
                     return winner = 2;
                 }
             });
@@ -207,4 +205,14 @@ function render() {
         });
         }
     });
+    if (winner === 1) {
+        let winnerText = document.getElementById('result');
+            result.innerHTML = "Player One Wins!";
+    } else if (winner === 2) {
+        let winnerText = document.getElementById('result');
+            result.innerHTML = "Player Two Wins!";
+    } else if (winner === 3) {
+        let winnerText = document.getElementById('result');
+            result.innerHTML = "It's a Tie!";
+    }
 }
