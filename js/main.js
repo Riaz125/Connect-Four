@@ -1,4 +1,10 @@
+// makes key value pairs for the render color of each player
+const boardLookup = {
+    1: "black",
+    2: "gray"
+}
 
+// array of winningCombos to be checked
 const winningCombos = [
     [0, 1, 2, 3],
     [41, 40, 39, 38],
@@ -71,16 +77,8 @@ const winningCombos = [
     [13, 20, 27, 34],
   ]
 
-// let board = [
-//     [null,null,null,null,null,null],
-//     [null,null,null,null,null,null],
-//     [null,null,null,null,null,null],
-//     [null,null,null,null,null,null],
-//     [null,null,null,null,null,null],
-//     [null,null,null,null,null,null],
-//     [null,null,null,null,null,null],
-// ]
 
+// board used to track the state of the board to be rendered
 let board = [
     [],
     [],
@@ -91,17 +89,17 @@ let board = [
     []
 ]
 
+// array of player one and player two's pieces to be checked if their is a winner
 let playerOneGrid;
 let playerTwoGrid;
+
+// variable that keeps track of who's turn it is
 let playerTurn;
+
+// variable that keeps track if there is a winner or tie
 let winner;
-// let columns = [ [0, 1, 2, 3, 4, 5],
-//             [6, 7, 8, 9, 10, 11],
-//             [12, 13, 14, 15, 16, 17],
-//             [18, 19, 20, 21, 22, 23],
-//             [24, 25, 26, 27, 28, 29],
-//             [30, 31, 32, 33, 34, 35],
-//             [36, 37, 38, 39, 40, 41] ]
+
+// keeps track of what spaces are remaining on the grid
 let columns = [
     [0,7,14,21,28,35],
     [1,8,15,22,29,36],
@@ -112,6 +110,7 @@ let columns = [
     [6,13,20,27,34,41]
 ]
 
+// click event listeners for turn function and render
 document.querySelector("#board").addEventListener("click", handleTurn);
 document.querySelector("#board").addEventListener("click", render);
 
@@ -129,7 +128,9 @@ function init() {
 
 init();
 
+// function that handles each turn
 function handleTurn(e) {
+        // checks to see if there is a inner or tie
         if(winner === 1) {
             return 1;
         } else if (winner === 2) {
@@ -137,6 +138,7 @@ function handleTurn(e) {
         } else if (winner === 3) {
             return 3;
         } else if (playerTurn === 1) {
+            // pushes the lowest avaible cell of the column the player clicked on into the player's grid state
             let column = e.target.className;
             if (columns[column].length === 0) {
                 return;
@@ -145,11 +147,13 @@ function handleTurn(e) {
             board[column].push(1);
             console.log(board);
             }
+            // checks if the player has won and changes the winner variable to that player's number
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerOneGrid.includes(i))) {
                     return winner = 1;
                 }
             });
+            // checks to see if there is a tie and then changes the turn to the other player
             if (winningCombos.forEach(function(array) {array.length === 0})) {
                 return winner = 3;
             } else {
@@ -178,15 +182,19 @@ function handleTurn(e) {
         render()
         
 }
+
+// searches through each element of the board array of arrays and
+// changes the background color of each cell accordingly
 function render() {
     console.log(board, "line 179");
     board.forEach(function(array, arrayIndex) {
         console.log(array, arrayIndex, "line 181");
         array.forEach(function(element, rowIndex) {
             console.log(element, "line 183");
-            let cell = document.getElementById('board').rows[rowIndex].cells[arrayIndex];
-            cell.style.background = "black";
-            console.log(rowIndex);
+            let inverter = 5 - (rowIndex * 2);
+            console.log(inverter);
+            let cell = document.getElementById('board').rows[rowIndex + inverter].cells[arrayIndex];
+            cell.style.background = boardLookup[element];
         });
     });
 }
