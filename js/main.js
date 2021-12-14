@@ -5,7 +5,7 @@ const boardLookup = {
 }
 
 // array of winningCombos to be checked
-const winningCombos = [
+const winningCombos =  [
     [0, 1, 2, 3],
     [41, 40, 39, 38],
     [7, 8, 9, 10],
@@ -52,9 +52,9 @@ const winningCombos = [
     [39, 31, 23, 15],
     [1, 9, 17, 25],
     [40, 32, 24, 16],
-    [9, 17, 25, 33],
+    [9, 7, 25, 33],
     [8, 16, 24, 32],
-    [11, 17, 23, 29],
+    [11, 7, 23, 29],
     [12, 18, 24, 30],
     [1, 2, 3, 4],
     [5, 4, 3, 2],
@@ -75,7 +75,8 @@ const winningCombos = [
     [11, 18, 25, 32],
     [12, 19, 26, 33],
     [13, 20, 27, 34],
-  ]
+    [9, 17, 25, 33],
+  ];
 
 
 // board used to track the state of the board to be rendered
@@ -104,7 +105,6 @@ let columns = [
 
 // click event listeners for turn function and render
 document.querySelector("#board").addEventListener("click", handleTurn);
-document.querySelector("#board").addEventListener("click", render);
 document.querySelector("#reset").addEventListener("click", init);
 
 
@@ -133,13 +133,10 @@ init();
 
 // function that handles each turn
 function handleTurn(e) {
+        render();
         // checks to see if there is a inner or tie
-        if(winner === 1) {
-            return;
-        } else if (winner === 2) {
-            return;
-        } else if (winner === 3) {
-            return;
+        if(winner !== null) {
+            return render();
         } else if (playerTurn === 1) {
             // pushes the lowest avaible cell of the column the player clicked on into the player's grid state
             let column = e.target.className;
@@ -153,7 +150,7 @@ function handleTurn(e) {
             // checks if the player has won and changes the winner variable to that player's number
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerOneGrid.includes(i))) {
-                    return winner = 1;
+                    winner = 1;
                 }
             });
             // checks to see if there is a tie and then changes the turn to the other player
@@ -164,9 +161,9 @@ function handleTurn(e) {
                }
             });
             if (checkGrid === 7) {
-                return winner = 3;
+                winner = 3;
             } else {
-                return playerTurn = 2;
+                playerTurn = 2;
             }
         } else if (playerTurn === 2) {
             let column = e.target.className;
@@ -179,7 +176,7 @@ function handleTurn(e) {
         }
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerTwoGrid.includes(i))) {
-                    return winner = 2;
+                    winner = 2;
                 }
             });
             let checkGrid = 0;
@@ -189,9 +186,9 @@ function handleTurn(e) {
                }
             });
             if (checkGrid === 7) {
-                return winner = 3;
+                winner = 3;
             } else {
-                return playerTurn = 1;
+                playerTurn = 1;
             }
         }
         render()
@@ -226,12 +223,18 @@ function render() {
     }
     if (winner === 1) {
         let winnerText = document.getElementById('result');
-            result.innerHTML = "Player One Wins!";
+        result.innerHTML = "Player One Wins!";
+        let playAgain = document.getElementById('reset');
+        playAgain.innerHTML = "Play Again";
     } else if (winner === 2) {
         let winnerText = document.getElementById('result');
-            result.innerHTML = "Player Two Wins!";
+        result.innerHTML = "Player Two Wins!";
+        let playAgain = document.getElementById('reset');
+        playAgain.innerHTML = "Play Again";
     } else if (winner === 3) {
         let winnerText = document.getElementById('result');
-            result.innerHTML = "It's a Tie!";
+        result.innerHTML = "It's a Tie!";
+        let playAgain = document.getElementById('reset');
+        playAgain.innerHTML = "Play Again";
     }
 }
