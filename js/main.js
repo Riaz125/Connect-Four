@@ -157,7 +157,13 @@ function handleTurn(e) {
                 }
             });
             // checks to see if there is a tie and then changes the turn to the other player
-            if (columns.forEach(function(array) {array.length === 0})) {
+            let checkGrid = 0;
+            columns.forEach(function(array) {
+               if (array.length === 0) {
+                   checkGrid++;
+               }
+            });
+            if (checkGrid === 7) {
                 return winner = 3;
             } else {
                 return playerTurn = 2;
@@ -176,7 +182,13 @@ function handleTurn(e) {
                     return winner = 2;
                 }
             });
-            if (columns.forEach(function(array) {array.length === 0})) {
+            let checkGrid = 0;
+            columns.forEach(function(array) {
+               if (array.length === 0) {
+                   checkGrid++;
+               }
+            });
+            if (checkGrid === 7) {
                 return winner = 3;
             } else {
                 return playerTurn = 1;
