@@ -113,6 +113,8 @@ let columns = [
 ]
 
 document.querySelector("#board").addEventListener("click", handleTurn);
+document.querySelector("#board").addEventListener("click", render);
+
 
 function init() {
     playerOneGrid = [];
@@ -173,24 +175,18 @@ function handleTurn(e) {
                 return playerTurn = 1;
             }
         }
+        render()
         
 }
 function render() {
+    console.log(board, "line 179");
     board.forEach(function(array, arrayIndex) {
+        console.log(array, arrayIndex, "line 181");
         array.forEach(function(element, rowIndex) {
-            console.log(element);
+            console.log(element, "line 183");
             let cell = document.getElementById('board').rows[rowIndex].cells[arrayIndex];
             cell.style.background = "black";
             console.log(rowIndex);
         });
     });
 }
-
-// function renderClick(e) {
-//     let column = e.target.className;
-//     if 
-//     console.log(document.getElementById('board'));
-//     // let cell  rowNum = [column].shift();= document.querySelector(`tr.${rowNum} td.c1 div`);
-//     let cell = document.getElementById('board').rows[0].cells[0];
-//     cell.style.background = "black";
-// }
