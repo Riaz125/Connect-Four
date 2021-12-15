@@ -147,7 +147,6 @@ function handleTurn(e) {
             } else {
             playerOneGrid.push(columns[column].shift());
             board[column].push(1);
-            console.log(board);
             }
             // checks if the player has won and changes the winner variable to that player's number
             winningCombos.forEach(function(array) {
@@ -174,7 +173,6 @@ function handleTurn(e) {
             } else {
             playerTwoGrid.push(columns[column].shift());
             board[column].push(2);
-            console.log(board);
         }
             winningCombos.forEach(function(array) {
                 if(array.every(i => playerTwoGrid.includes(i))) {
