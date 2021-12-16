@@ -197,6 +197,7 @@ function handleTurn(e) {
 // searches through each element of the board array of arrays and
 // changes the background color of each cell accordingly
 function render() {
+    
     board.forEach(function(array, arrayIndex) {
         //clears the board
         if (board[arrayIndex].length === 0) {
@@ -224,6 +225,11 @@ function render() {
         let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Reset";
     }
+    
+    let animation = document.getElementById('animation')
+    animation.classList.remove('winning');
+    void animation.offsetWidth;
+    animation.classList.add('winning');
     if (winner === 1) {
         let winnerText = document.getElementById('result');
         result.innerHTML = "Player One Wins!";
@@ -249,4 +255,5 @@ function render() {
         let winnerMessage = document.getElementById('winningtext');
         winnerMessage.innerHTML = "";
     }
+    
 }
