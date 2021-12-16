@@ -206,7 +206,7 @@ function render() {
                 cell.style.backgroundColor = "white";
             }
         } else {
-        //renders play choices
+        //renders player choices
         array.forEach(function(element, rowIndex) {
             let inverter = 5 - (rowIndex * 2);
             let cell = document.getElementById('board').rows[rowIndex + inverter].cells[arrayIndex];
@@ -214,6 +214,8 @@ function render() {
         });
         }
     });
+
+    // Renders who's turn it is
     if (playerTurn === 1) {
         let winnerText = document.getElementById('result');
         result.innerHTML = "Player One's Turn";
@@ -226,10 +228,13 @@ function render() {
         playAgain.innerHTML = "Reset";
     }
     
+    // Resets win message animation
     let animation = document.getElementById('animation')
     animation.classList.remove('winning');
     void animation.offsetWidth;
     animation.classList.add('winning');
+
+    // Renders Winner messages
     if (winner === 1) {
         let winnerText = document.getElementById('result');
         result.innerHTML = "Player One Wins!";

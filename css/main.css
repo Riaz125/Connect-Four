@@ -14,6 +14,7 @@ h2 {
     font-size: 50px;
     text-align: center;
     font-style: italic;
+    margin-bottom: 0px;
 }
 
 #result {
@@ -32,6 +33,7 @@ div.btcontainer {
     height: 50px;	
     overflow: hidden;
     position: relative;
+    padding-bottom: 10px;
    }
 .winning h2 {
     position: absolute;
