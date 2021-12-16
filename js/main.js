@@ -229,15 +229,24 @@ function render() {
         result.innerHTML = "Player One Wins!";
         let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Play Again";
+        let winnerMessage = document.getElementById('winningtext');
+        winnerMessage.innerHTML = "Player One Wins!";
     } else if (winner === 2) {
         let winnerText = document.getElementById('result');
         result.innerHTML = "Player Two Wins!";
         let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Play Again";
+        let winnerMessage = document.getElementById('winningtext');
+        winnerMessage.innerHTML = "Player Two Wins!";
     } else if (winner === 3) {
         let winnerText = document.getElementById('result');
-        result.innerHTML = "It's a Tie!";
+        result.innerHTML = "It's A Tie!";
         let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Play Again";
+        let winnerMessage = document.getElementById('winningtext');
+        winnerMessage.innerHTML = "It's A Tie!";
+    } else {
+        let winnerMessage = document.getElementById('winningtext');
+        winnerMessage.innerHTML = "";
     }
 }
