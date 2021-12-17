@@ -1,8 +1,8 @@
 
 #board {
     margin: auto;
-    outline-style: double;
     box-shadow: 40px 30px 5px rgb(78, 78, 78);
+    border: outset 10px
 }
 
 td {

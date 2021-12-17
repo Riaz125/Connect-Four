@@ -11,24 +11,33 @@ const winningCombos =  [
     [7, 8, 9, 10],
     [34, 33, 32, 31],
     [14, 15, 16, 17],
+    [3, 10, 17, 24],
+    [38, 31, 24, 17],
+    [4, 11, 18, 25],
+    [37, 30, 23, 16],
+    [5, 12, 19, 26],
+    [1, 2, 3, 4],
+    [5, 4, 3, 2],
+    [8, 9, 10, 11],
+    [12, 11, 10, 9],
+    [15, 16, 17, 18],
+    [19, 18, 17, 16],
+    [22, 23, 24, 25],
+    [26, 25, 24, 23],
+    [29, 30, 31, 32],
+    [33, 32, 31, 30],
+    [36, 37, 38, 39],
+    [40, 39, 38, 37],
+    [7, 14, 21, 28],
+    [8, 15, 22, 29],
+    [9, 16, 23, 30],
+    [10, 17, 24, 31],
     [27, 26, 25, 24],
     [21, 22, 23, 24],
     [20, 19, 18, 17],
     [28, 29, 30, 31],
     [13, 12, 11, 10],
     [35, 36, 37, 38],
-    [6, 5, 4, 3],
-    [0, 7, 14, 21],
-    [41, 34, 27, 20],
-    [1, 8, 15, 22],
-    [40, 33, 26, 19],
-    [2, 9, 16, 23],
-    [39, 32, 25, 18],
-    [3, 10, 17, 24],
-    [38, 31, 24, 17],
-    [4, 11, 18, 25],
-    [37, 30, 23, 16],
-    [5, 12, 19, 26],
     [36, 29, 22, 15],
     [6, 13, 20, 27],
     [35, 28, 21, 14],
@@ -56,22 +65,13 @@ const winningCombos =  [
     [8, 16, 24, 32],
     [11, 17, 23, 29],
     [12, 18, 24, 30],
-    [1, 2, 3, 4],
-    [5, 4, 3, 2],
-    [8, 9, 10, 11],
-    [12, 11, 10, 9],
-    [15, 16, 17, 18],
-    [19, 18, 17, 16],
-    [22, 23, 24, 25],
-    [26, 25, 24, 23],
-    [29, 30, 31, 32],
-    [33, 32, 31, 30],
-    [36, 37, 38, 39],
-    [40, 39, 38, 37],
-    [7, 14, 21, 28],
-    [8, 15, 22, 29],
-    [9, 16, 23, 30],
-    [10, 17, 24, 31],
+    [6, 5, 4, 3],
+    [0, 7, 14, 21],
+    [41, 34, 27, 20],
+    [1, 8, 15, 22],
+    [40, 33, 26, 19],
+    [2, 9, 16, 23],
+    [39, 32, 25, 18],
     [11, 18, 25, 32],
     [12, 19, 26, 33],
     [13, 20, 27, 34]
@@ -93,6 +93,12 @@ let winner;
 
 // keeps track of what spaces are remaining on the grid
 let columns;
+
+// DOM elements
+let result = document.getElementById('result');
+let playAgain = document.getElementById('reset');
+let winnerMessage = document.getElementById('winningtext');
+let animation = document.getElementById('animation')
 
 // click event listeners for turn function and render
 document.querySelector("#board").addEventListener("click", handleTurn);
@@ -134,7 +140,6 @@ init();
 
 // function that handles each turn
 function handleTurn(e) {
-        render();
         // checks to see if there is a inner or tie
         if(winner !== null) {
             return render();
@@ -216,48 +221,33 @@ function render() {
     });
 
     // Renders who's turn it is
-    if (playerTurn === 1) {
-        let winnerText = document.getElementById('result');
+    if (playerTurn === 1) {;
         result.innerHTML = "Player One's Turn";
-        let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Reset";
     } else if (playerTurn === 2) {
-        let winnerText = document.getElementById('result');
         result.innerHTML = "Player Two's Turn";
-        let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Reset";
     }
     
     // Resets win message animation
-    let animation = document.getElementById('animation')
     animation.classList.remove('winning');
     void animation.offsetWidth;
     animation.classList.add('winning');
 
     // Renders Winner messages
     if (winner === 1) {
-        let winnerText = document.getElementById('result');
         result.innerHTML = "Player One Wins!";
-        let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Play Again";
-        let winnerMessage = document.getElementById('winningtext');
         winnerMessage.innerHTML = "Player One Wins!";
     } else if (winner === 2) {
-        let winnerText = document.getElementById('result');
         result.innerHTML = "Player Two Wins!";
-        let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Play Again";
-        let winnerMessage = document.getElementById('winningtext');
         winnerMessage.innerHTML = "Player Two Wins!";
     } else if (winner === 3) {
-        let winnerText = document.getElementById('result');
         result.innerHTML = "It's A Tie!";
-        let playAgain = document.getElementById('reset');
         playAgain.innerHTML = "Play Again";
-        let winnerMessage = document.getElementById('winningtext');
         winnerMessage.innerHTML = "It's A Tie!";
     } else {
-        let winnerMessage = document.getElementById('winningtext');
         winnerMessage.innerHTML = "";
     }
     
