@@ -18,6 +18,6 @@ This game was developed using HTML, CSS, and Javascript.
 
 ## Next Steps:
 
-    * Implement sound Effects
-    * Let players choose their color
-    * Create an AI player
+* Implement sound Effects
+* Let players choose their color
+* Create an AI player
