@@ -4,13 +4,13 @@ Connect Four is a game where each player is trying to get four consecutive slots
 
 ## Screenshots
 
-[Start Scrn]<img src="https://imgur.com/a/Yk3CdcD"/>
+<img src="https://i.imgur.com/WwKqLe2.png"/>
 
-[Win Scrn]<img src="https://imgur.com/a/5tZijFo"/>
+<img src="https://i.imgur.com/uhaPflL.png"/>
 
 ## Getting Started
 
-Click here to start playing: [Game link]https://riaz125.github.io/Connect-Four/
+Click here to start playing: [Connect-Four](https://riaz125.github.io/Connect-Four/)
 
 ## Technologies Used
 
